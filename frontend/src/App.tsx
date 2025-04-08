@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useLeguesData } from "./hooks/useLeaguesData";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data: leagues, isLoading, error } = useLeguesData();
+
+  if (isLoading) return <p>Carregando...</p>;
+  if (error) return <p>Erro ao carregar os dados.</p>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <main>
+        <div>
+          <div>
+            {leagues.map((league: any) => (
+              <div key={league.id}>
+                <div />
+                <div>
+                  <div>
+                    <img
+                      src={league.image_path}
+                      alt={`Logo da ${league.name}`}
+                    />
+                  </div>
+                  <h3>
+                    {league.name}
+                  </h3>
+                  <div>
+                    <p>
+                      <span>Código:</span> {league.short_code}
+                    </p>
+                    <p>
+                      <span>Esporte:</span> {league.sport.name}
+                    </p>
+                    <p>
+                      <span>Último Jogo:</span>{" "}
+                      {new Date(league.last_played_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
