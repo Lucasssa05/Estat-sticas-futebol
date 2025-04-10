@@ -33,7 +33,7 @@ function PlayerFinder() {
         
           <div className="mb-8 space-y-4">
             <h2 className="text-4xl font-bold animate-bounce">
-              Explore o Mundo do Futebol!
+              Explore o Mundo dos Esports!
             </h2>
             <p className="text-lg text-gray-600 animate-pulse">
               Dados em tempo real de ligas específicas
