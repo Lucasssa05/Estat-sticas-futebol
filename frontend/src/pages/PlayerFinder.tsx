@@ -36,11 +36,11 @@ function PlayerFinder() {
               Explore o Mundo do Futebol!
             </h2>
             <p className="text-lg text-gray-600 animate-pulse">
-              Dados em tempo real de ligas de todo o mundo
+              Dados em tempo real de ligas específicas
             </p>
             <div className="bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent animate-gradient">
               <p className="text-xl font-semibold">
-                Powered by Football API
+                Powered by SportMonks API
               </p>
             </div>
           </div>
